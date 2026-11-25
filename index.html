@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf6ef">
+  <meta name="description" content="用 40 个日常选择，找到你最想出演的爱情故事。一份关于理想亲密关系的趣味测试。">
+  <title>测测你的理想恋爱剧本 · 心动放映室</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="stories.js" defer></script>
+  <script src="questions.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="frame topbar-inner">
+      <button id="home-link" class="brand" type="button" aria-label="心动放映室首页">
+        <span class="brand-icon" aria-hidden="true">♥</span>
+        <span>心动放映室</span>
+      </button>
+      <button id="about-link" class="about-link" type="button"><span aria-hidden="true">ⓘ</span> 关于测试</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div id="home" class="view">
+      <section class="hero frame" aria-labelledby="home-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span aria-hidden="true">✦</span> THE LOVE SCRIPT</div>
+          <h1 id="home-title" tabindex="-1"><span>测测你的</span><span class="title-accent">理想恋爱剧本</span></h1>
+          <p class="hero-description">如果你的爱情是一部电影，它会怎么开场？<br>用 40 个日常选择，找到你最想出演的故事。</p>
+          <div class="hero-actions">
+            <button id="start" class="button primary" type="button"><span class="play" aria-hidden="true"></span><span id="start-label">开始测试</span></button>
+            <span class="hero-meta">40 道单选题 <span aria-hidden="true">·</span> 约 5 分钟</span>
+          </div>
+        </div>
+        <div class="poster-stage" aria-hidden="true">
+          <span class="stage-star stage-star-large">✧</span><span class="stage-star stage-star-small">✦</span>
+          <div class="poster-backing"></div>
+          <div class="poster">
+            <img src="moonlit-cover.jpg" width="720" height="1080" alt="" fetchpriority="high">
+            <div class="poster-type"><span>THE LOVE SCRIPT</span><strong>你的心动 · 正在成片</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="teasers" aria-labelledby="teaser-title">
+        <div class="frame">
+          <div class="section-label"><span aria-hidden="true">✦</span> 剧本预告</div>
+          <h2 id="teaser-title">你的故事，可能这样开场</h2>
+          <div class="teaser-grid">
+            <article class="teaser teaser-peach">
+              <span class="teaser-icon" aria-hidden="true">☼</span>
+              <div><h3>细水长流</h3><p>爱是每天留给你的那盏灯。</p></div>
+            </article>
+            <article class="teaser teaser-purple">
+              <span class="teaser-icon" aria-hidden="true">☾</span>
+              <div><h3>灵魂共鸣</h3><p>一句没说完的话，有人听懂了。</p></div>
+            </article>
+            <article class="teaser teaser-green">
+              <span class="teaser-icon" aria-hidden="true">✧</span>
+              <div><h3>即兴远行</h3><p>把「改天吧」换成「现在出发」。</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="quiz" class="view inner-view" aria-labelledby="question-title" hidden>
+      <div class="quiz-progress">
+        <div class="progress-labels"><span id="chapter" class="section-label"></span><span id="question-count" class="question-count"></span></div>
+        <progress id="progress" max="40" value="0" aria-label="已答题数"></progress>
+      </div>
+      <form id="quiz-form" class="question-panel">
+        <div id="question-content" class="question-content">
+          <h1 id="question-title" tabindex="-1"></h1>
+          <p class="question-hint">选一个最接近你真实想法的选项。</p>
+          <div id="options" class="options" role="radiogroup" aria-labelledby="question-title"></div>
+        </div>
+        <div class="quiz-actions">
+          <button id="previous" class="button secondary" type="button">上一题</button>
+          <button id="next" class="button primary" type="submit" disabled>下一题</button>
+        </div>
+      </form>
+      <p class="quiz-note">按你的心意选就好，每一种偏好都可以成立。</p>
+    </section>
+
+    <section id="result" class="view inner-view result-view" aria-labelledby="result-title" hidden>
+      <div class="result-heading">
+        <div class="section-label"><span aria-hidden="true">✦</span> 你的恋爱剧本</div>
+        <h1 id="result-title" tabindex="-1"><span class="visually-hidden">你的理想恋爱剧本是</span><span id="story-title"></span></h1>
+        <p id="story-line"></p>
+      </div>
+      <div class="result-grid">
+        <figure class="share-figure">
+          <canvas id="share-card" width="900" height="1200" role="img" aria-label="恋爱剧本分享卡"></canvas>
+          <figcaption>竖版分享卡 · 900 × 1200</figcaption>
+          <button id="download" class="button primary" type="button">保存结果图片</button>
+          <p id="share-status" class="status" role="status"></p>
+        </figure>
+        <div class="result-details">
+          <div id="story-tags" class="tags" aria-label="恋爱关键词"></div>
+          <section><h2>为什么是这部</h2><p id="story-reason"></p></section>
+          <section><h2>你的隐藏优势</h2><p id="story-strength"></p></section>
+          <section class="easter-egg"><h2><span aria-hidden="true">✧</span> 片尾彩蛋</h2><p id="story-egg"></p></section>
+        </div>
+      </div>
+      <section class="score-panel" aria-labelledby="scores-title">
+        <h2 id="scores-title">你的恋爱偏好</h2>
+        <p id="scores-note">各分数是该偏好被选中的比例，按各自的可选次数计算。</p>
+        <ul id="scores" class="scores" aria-describedby="scores-note"></ul>
+      </section>
+      <div class="result-actions"><button id="restart" class="button secondary" type="button">重新测试</button></div>
+    </section>
+  </main>
+
+  <footer class="footer frame"><span>心动放映室</span><span>趣味自我探索 · 不作专业心理评估</span></footer>
+
+  <dialog id="about-dialog" class="about-dialog" aria-labelledby="about-title">
+    <h2 id="about-title">关于这份测试</h2>
+    <p>40 道生活情境题，覆盖相处节奏、情感表达、分歧处理和对未来的期待。根据你在六种恋爱偏好上的选择，匹配一部最接近你理想关系的剧本。</p>
+    <p>单身或正在恋爱都可以作答。答案只在当前浏览器内处理。这份趣味测试适合自我探索，不用于心理诊断或判断关系好坏。</p>
+    <form method="dialog"><button class="button primary" type="submit" autofocus>知道了</button></form>
+  </dialog>
+  <noscript><p class="noscript">请启用 JavaScript 后重新打开网页，即可开始测试。</p></noscript>
+</body>
+</html>
